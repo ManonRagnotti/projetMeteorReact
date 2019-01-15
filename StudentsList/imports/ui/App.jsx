@@ -1,12 +1,23 @@
-import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import React, { Component, Fragment } from 'react';
+// import { Template } from "meteor/templating";
+import Crud from '../../client/crud/Crud';
+// import Info from './Info.jsx';
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div className="app">
+//        {Crud}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
 
 const App = () => (
   <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
+    <Crud />
   </div>
 );
 
