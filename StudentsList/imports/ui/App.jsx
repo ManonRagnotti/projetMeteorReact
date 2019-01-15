@@ -1,17 +1,9 @@
 import React, { Component, Fragment } from 'react';
-// import { Template } from "meteor/templating";
-// import Crud from '../../client/crud/Crud';
-
-// const App = () => (
-//   <div>
-//     <Crud />
-//   </div>
-// );
-//
-// export default App;
 import ReactDOM from 'react-dom';
+
 import { withTracker } from 'meteor/react-meteor-data';
 import { Students } from '../api/students.js'
+
 import Student from './Student.js';
 
 // App component - represents the whole app
