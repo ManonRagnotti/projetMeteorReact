@@ -41,11 +41,6 @@ class App extends Component {
         <header>
           <h1>Students List</h1>
           <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
-          {/*  <input
-              type="text"
-              ref="textInput"
-              placeholder="Type to add new sudent"
-            />*/}
             <input
               type = "text"
               ref="nameInput"
