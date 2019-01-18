@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor'
 
 import { withTracker } from 'meteor/react-meteor-data';
-import { Students } from '../api/students.js'
+import { Students } from '../api/students.js';
+import AccountsUIWrapper from './AccountsUIWrapper.js';
 
 import Student from './Student.js';
 
@@ -20,7 +22,9 @@ class App extends Component {
     Students.insert({
       name,
       lastName,
-      link
+      link,
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
     });
 
     // Clear form
@@ -40,27 +44,32 @@ class App extends Component {
       <div className="container">
         <header>
           <h1>Students List</h1>
-          <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
-            <input
-              type = "text"
-              ref="nameInput"
-              placeholder = "Votre Prénom"
-              className = "formfield"
-            />
-            <input
-              type = "text"
-              ref="lastNameInput"
-              placeholder = "Votre nom"
-              className = "formfield"
-            />
-            <input
-              type = "text"
-              ref="linkInput"
-              placeholder = "Lien GIT"
-              className = "formfield"
-            />
-          <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Soumettre </ button>
-          </form>
+
+          <AccountsUIWrapper />
+
+          { this.props.currentUser ?
+            <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
+              <input
+                type = "text"
+                ref="nameInput"
+                placeholder = "Votre Prénom"
+                className = "formfield"
+              />
+              <input
+                type = "text"
+                ref="lastNameInput"
+                placeholder = "Votre nom"
+                className = "formfield"
+              />
+              <input
+                type = "text"
+                ref="linkInput"
+                placeholder = "Lien GIT"
+                className = "formfield"
+              />
+            <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Ajouter un élève </ button>
+            </form> : ''
+          }
         </header>
 
         <ul>
@@ -74,5 +83,6 @@ class App extends Component {
 export default withTracker( () => {
   return {
     students: Students.find({}).fetch(),
+    currentUser: Meteor.user(),
   };
 })(App);

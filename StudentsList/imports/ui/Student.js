@@ -4,13 +4,6 @@ import { Students } from '../api/students.js';
 // Students component - represents a single todo item
 export default class Student extends Component {
 
-  toggleChecked() {
-    // Set the checked property to the opposite of its current value
-    Students.update(this.props.student._id, {
-      $set: { checked: !this.props.student.checked },
-    });
-  }
-
   state = {
     isUpdated: false
   }
@@ -60,6 +53,7 @@ export default class Student extends Component {
           ) : (
               <div className="studentInfo">
                 <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
+                {this.props.student.username} a ajouté :
                 <div id="name" > {this.props.student.name}</div>
                 <div> {this.props.student.lastName} </div>
                 <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
