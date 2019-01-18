@@ -47,6 +47,7 @@ class App extends Component {
       <div className="container">
         <header>
           <h1>Students List</h1>
+          <p>Connectez-vous pour accéder au formulaire</p>
 
           <AccountsUIWrapper />
         </header>

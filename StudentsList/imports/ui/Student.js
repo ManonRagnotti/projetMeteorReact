@@ -38,28 +38,29 @@ export default class Student extends Component {
    const {isUpdated} = this.state
 
     return (
-      <li className={studentClassName + 'delete-item'} key={this.props.student._id}>
+      <li className={studentClassName + 'item'} key={this.props.student._id}>
         <button className="delete" onClick={this.deleteThisStudent.bind(this)}>
           &times;
         </button>
 
         {isUpdated ? (
         <div className="isUpdated">
-          <form onSubmit={this.updateThisStudent(this.props.student._id)}>
-            <input name="name" defaultValue={this.props.student.name} />
-            <input name="lastName" defaultValue={this.props.student.lastName} />
-            <input name="link" defaultValue={this.props.student.link} />
+          <form className="updateForm" onSubmit={this.updateThisStudent(this.props.student._id)}>
+            <input className="input" name="name" defaultValue={this.props.student.name} />
+            <input className="input" name="lastName" defaultValue={this.props.student.lastName} />
+            <input className="input" name="link" defaultValue={this.props.student.link} />
             <input className="validUpdate" type="submit" value="Update" id="checkbox" />
           </form>
         </div>
         ) : (
         <div className="studentInfo">
-          {this.props.student.username} a ajouté :
+
+          <span className="whoAdd"> {this.props.student.username} a ajouté : </span>
 
           <div className="infos-content">
             <div id="name" > {this.props.student.name}</div>
-            <div> {this.props.student.lastName} </div>
-            <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
+            <div id="lastName"> {this.props.student.lastName} </div>
+            <div id="link"><a href={this.props.student.link} target="_blank">{this.props.student.link}</a></div>
           </div>
           <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
         </div>
