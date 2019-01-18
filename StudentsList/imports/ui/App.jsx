@@ -20,6 +20,8 @@ class App extends Component {
     const lastName = ReactDOM.findDOMNode(this.refs.lastNameInput).value.trim();
     const link = ReactDOM.findDOMNode(this.refs.linkInput).value.trim();
 
+    Meteor.call('students.insert', {name, lastName, link})
+
     Students.insert({
       name,
       lastName,
@@ -47,49 +49,45 @@ class App extends Component {
           <h1>Students List</h1>
 
           <AccountsUIWrapper />
-            </header>
+        </header>
 
-          { this.props.currentUser ?
-            <section className="form-content">
-            <div className="big-circle-background"></div>
-              <div className="little-circle-background">
-                <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
-                  <div className="inputs">
-                    <input
-                      type = "text"
-                      ref="nameInput"
-                      placeholder = "Votre Prénom"
-                      className = "formfield"
-                    />
-                    <input
-                      type = "text"
-                      ref="lastNameInput"
-                      placeholder = "Votre nom"
-                      className = "formfield"
-                    />
-                    <input
-                      type = "text"
-                      ref="linkInput"
-                      placeholder = "Lien GIT"
-                      className = "formfield"
-                    />
-                  </div>
-                <div className="btn-add-content">
-                  <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Ajouter un élève </ button>
-                </div>
-                </form>
+        { this.props.currentUser ?
+        <section className="form-content">
+          <div className="big-circle-background"></div>
+          <div className="little-circle-background">
+            <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
+              <div className="inputs">
+                <input
+                  type = "text"
+                  ref="nameInput"
+                  placeholder = "Votre Prénom"
+                  className = "formfield"
+                />
+                <input
+                  type = "text"
+                  ref="lastNameInput"
+                  placeholder = "Votre nom"
+                  className = "formfield"
+                />
+                <input
+                  type = "text"
+                  ref="linkInput"
+                  placeholder = "Lien GIT"
+                  className = "formfield"
+                />
               </div>
-            </section> : ''
-          }
-
-
+              <div className="btn-add-content">
+                <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Ajouter un élève </ button>
+              </div>
+            </form>
+          </div>
+        </section> : '' }
 
         <section className="students-list-content">
-        <ul className="list-students-container">
-          {this.renderStudents()}
-        </ul>
+          <ul className="list-students-container">
+            {this.renderStudents()}
+          </ul>
         </section>
-
       </div>
     )
   }

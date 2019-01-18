@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
+
 import { Students } from '../api/students.js';
 
-
 import '../styles/Student.css';
-// Students component - represents a single todo item
+
 export default class Student extends Component {
 
   state = {
@@ -19,16 +20,15 @@ export default class Student extends Component {
       link: {value: link}
     } = event.target
 
-    Students.update({_id: key}, {name: name, lastName, link})
+    Meteor.call(  "students.update", { studentId:key, name, lastName, link } )
 
     this.setState({
       isUpdated: false
     })
-
   }
 
   deleteThisStudent() {
-    Students.remove(this.props.student._id);
+    Meteor.call('students.remove', this.props.student._id);
   }
 
   render() {
@@ -39,33 +39,32 @@ export default class Student extends Component {
 
     return (
       <li className={studentClassName + 'delete-item'} key={this.props.student._id}>
-          <button className="delete" onClick={this.deleteThisStudent.bind(this)}>
-            &times;
-          </button>
+        <button className="delete" onClick={this.deleteThisStudent.bind(this)}>
+          &times;
+        </button>
 
-          {isUpdated ? (
-            <div className="isUpdated">
-              <form onSubmit={this.updateThisStudent(this.props.student._id)}>
-                <input name="name" defaultValue={this.props.student.name} />
-                <input name="lastName" defaultValue={this.props.student.lastName} />
-                <input name="link" defaultValue={this.props.student.link} />
-                <input className="validUpdate" type="submit" value="Update" id="checkbox" />
-              </form>
-            </div>
-          ) : (
-              <div className="studentInfo">
-                {this.props.student.username} a ajouté :
+        {isUpdated ? (
+        <div className="isUpdated">
+          <form onSubmit={this.updateThisStudent(this.props.student._id)}>
+            <input name="name" defaultValue={this.props.student.name} />
+            <input name="lastName" defaultValue={this.props.student.lastName} />
+            <input name="link" defaultValue={this.props.student.link} />
+            <input className="validUpdate" type="submit" value="Update" id="checkbox" />
+          </form>
+        </div>
+        ) : (
+        <div className="studentInfo">
+          {this.props.student.username} a ajouté :
 
-                <div className="infos-content">
-                  <div id="name" > {this.props.student.name}</div>
-                  <div> {this.props.student.lastName} </div>
-                  <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
-                </div>
-              <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
-              </div>
-            )}
+          <div className="infos-content">
+            <div id="name" > {this.props.student.name}</div>
+            <div> {this.props.student.lastName} </div>
+            <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
+          </div>
+          <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
+        </div>
+        )}
       </li>
-
     )
   }
 }
