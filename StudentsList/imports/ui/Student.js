@@ -11,6 +11,27 @@ export default class Student extends Component {
     });
   }
 
+  state = {
+    isUpdated: false
+  }
+
+  updateThisStudent = (key) => (event) =>{
+    event.preventDefault()
+
+    const {
+      name: {value: name},
+      lastName: {value: lastName},
+      link: {value: link}
+    } = event.target
+
+    Students.update({_id: key}, {name: name, lastName, link})
+
+    this.setState({
+      isUpdated: false
+    })
+
+  }
+
   deleteThisStudent() {
     Students.remove(this.props.student._id);
   }
@@ -19,24 +40,33 @@ export default class Student extends Component {
   // Give tasks a different className when they are checked off,
    // so that we can style them nicely in CSS
    const studentClassName = this.props.student.checked ? 'checked' : '';
+   const {isUpdated} = this.state
 
     return (
-      <li className={studentClassName}>
+      <li className={studentClassName} key={this.props.student._id}>
           <button className="delete" onClick={this.deleteThisStudent.bind(this)}>
             &times;
           </button>
 
-          <input
-            type="checkbox"
-            readOnly
-            checked={!!this.props.student.checked}
-            onClick={this.toggleChecked.bind(this)}
-          />
+          {isUpdated ? (
+            <div className="isUpdated">
+              <form onSubmit={this.updateThisStudent(this.props.student._id)}>
+                <input name="name" defaultValue={this.props.student.name} />
+                <input name="lastName" defaultValue={this.props.student.lastName} />
+                <input name="link" defaultValue={this.props.student.link} />
+                <input className="validUpdate" type="submit" value="Update" id="checkbox" />
+              </form>
+            </div>
+          ) : (
+              <div className="studentInfo">
+                <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
+                <div id="name" > {this.props.student.name}</div>
+                <div> {this.props.student.lastName} </div>
+                <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
+              </div>
+            )}
+      </li>
 
-        <p className="name">{this.props.student.name}</p>
-        <p className="lastName">{this.props.student.lastName}</p>
-        <p className="link">{this.props.student.link}</p>
-        </li>
-    );
+    )
   }
 }
