@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.little-circle-background {
+  border-radius: 50%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,117a71+100 */
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #ffffff 0%, #117a71 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #ffffff 0%, #117a71 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #ffffff 0%, #117a71 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#117a71', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  height: 400px;
+  position: absolute;
+  right: 0;
+  width: 400px;
+}
+
+.big-circle-background {
+  border: 1px solid #C7C7C7;
+  border-radius: 50%;
+  height: 600px;
+  position: absolute;
+  right: 0;
+  width: 600px;
+  z-index: -2;
+}
+
+.form-content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 45%;
+  height: 100%;
+  position: relative;
+}
+
+.students-list-content {
+  width: 55%;
+}
+
+.new-student {
+  display: flex;
+  align-items: center;
+  zs
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%
+}
+
+.formfield {
+  background: transparent;
+  border: none;
+  padding: 2em 0;
+  outline: none;
+}
+
+.formfield::placeholder {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  font-size: 20px;
+}
+
+.btn-add-content {
+  position: absolute;
+  right: -10%;
+}
+
+.myButton {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,cacaca+100 */
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #cacaca 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #ffffff 0%, #cacaca 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ffffff 0%, #cacaca 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cacaca', GradientType=0);
+  /* IE6-9 */
+  border: none;
+  box-shadow: -2px 1px 6px rgba(116, 116, 116, 0.4);
+  border-radius: 50%;
+  height: 80px;
+  outline: none;
+  width: 80px;
+}
+
+.list-students-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

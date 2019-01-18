@@ -7,6 +7,7 @@ import { Students } from '../api/students.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 
 import Student from './Student.js';
+import '../styles/App.css';
 
 // App component - represents the whole app
 class App extends Component {
@@ -46,35 +47,49 @@ class App extends Component {
           <h1>Students List</h1>
 
           <AccountsUIWrapper />
+            </header>
 
           { this.props.currentUser ?
-            <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
-              <input
-                type = "text"
-                ref="nameInput"
-                placeholder = "Votre Prénom"
-                className = "formfield"
-              />
-              <input
-                type = "text"
-                ref="lastNameInput"
-                placeholder = "Votre nom"
-                className = "formfield"
-              />
-              <input
-                type = "text"
-                ref="linkInput"
-                placeholder = "Lien GIT"
-                className = "formfield"
-              />
-            <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Ajouter un élève </ button>
-            </form> : ''
+            <section className="form-content">
+            <div className="big-circle-background"></div>
+              <div className="little-circle-background">
+                <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
+                  <div className="inputs">
+                    <input
+                      type = "text"
+                      ref="nameInput"
+                      placeholder = "Votre Prénom"
+                      className = "formfield"
+                    />
+                    <input
+                      type = "text"
+                      ref="lastNameInput"
+                      placeholder = "Votre nom"
+                      className = "formfield"
+                    />
+                    <input
+                      type = "text"
+                      ref="linkInput"
+                      placeholder = "Lien GIT"
+                      className = "formfield"
+                    />
+                  </div>
+                <div className="btn-add-content">
+                  <button onClick = {this.handleSubmit.bind(this)} className = "myButton" > Ajouter un élève </ button>
+                </div>
+                </form>
+              </div>
+            </section> : ''
           }
-        </header>
 
-        <ul>
+
+
+        <section className="students-list-content">
+        <ul className="list-students-container">
           {this.renderStudents()}
         </ul>
+        </section>
+
       </div>
     )
   }

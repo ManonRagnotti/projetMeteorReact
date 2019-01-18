@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Students } from '../api/students.js';
 
+
+import '../styles/Student.css';
 // Students component - represents a single todo item
 export default class Student extends Component {
 
@@ -36,7 +38,7 @@ export default class Student extends Component {
    const {isUpdated} = this.state
 
     return (
-      <li className={studentClassName} key={this.props.student._id}>
+      <li className={studentClassName + 'delete-item'} key={this.props.student._id}>
           <button className="delete" onClick={this.deleteThisStudent.bind(this)}>
             &times;
           </button>
@@ -52,11 +54,14 @@ export default class Student extends Component {
             </div>
           ) : (
               <div className="studentInfo">
-                <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
                 {this.props.student.username} a ajouté :
-                <div id="name" > {this.props.student.name}</div>
-                <div> {this.props.student.lastName} </div>
-                <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
+
+                <div className="infos-content">
+                  <div id="name" > {this.props.student.name}</div>
+                  <div> {this.props.student.lastName} </div>
+                  <a href={this.props.student.link} target="_blank">{this.props.student.link}</a>
+                </div>
+              <button id="checkbox" className="update" onClick={() => this.setState({ isUpdated: true })}>Update</button>
               </div>
             )}
       </li>

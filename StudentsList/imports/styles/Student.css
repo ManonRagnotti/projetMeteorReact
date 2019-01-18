@@ -1,0 +1,36 @@
+.studentInfo {
+  height: 150px;
+  width: 150px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#117a71+0,ffffff+100 */
+  border: #117a71 1px solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infos-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete {
+  height: 40px;
+  width: 40px;
+  background-color: #0F1226;
+  border-radius: 50%;
+  border: none;
+  color: #ffffff;
+  position: absolute;
+}
+
+.delete-item {
+  list-style: none;
+  position: relative;
+  width: 30%;
+  margin: 1.5em 0;
+}
