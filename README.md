@@ -5,6 +5,9 @@
 - You can create an account and sign in/sign out.
 - We also added some security to make sure that not every user can edit any part of the database.
 
+# See our project
+- Go to dev branch
+
 # Project Members
 - Eugenie Roques : https://github.com/eugenierqs
 - Manon Ragnotti : https://github.com/ManonRagnotti
