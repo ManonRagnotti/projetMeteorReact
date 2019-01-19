@@ -22,12 +22,12 @@ Meteor.methods({
     });
   },
   'students.remove'(studentId) {
-    check(studentId, String);
+    // check(studentId, String);
 
     Students.remove(studentId);
   },
   'students.update'({studentId, name, lastName, link}) {
-    check(studentId, String);
+    // check(studentId, String);
     check(name, String);
     check(lastName, String);
     check(link, String);

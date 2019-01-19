@@ -10,6 +10,16 @@ header {
   width: 100%;
   margin: 2%
 }
+header h1{
+  position: absolute;
+  color: #989898;
+  font-size: 11em;
+  z-index: -5;
+  opacity: 0.5;
+  bottom: 0;
+  margin: 0;
+  right: 0;
+}
 
 /* FORM ADD NEW STUDENT */
 .form-content {
